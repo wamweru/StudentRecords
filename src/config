@@ -1,0 +1,37 @@
+export const config={
+    names:{
+        signUp:"b2c_1_susi_reset_v2",
+        signIn:"b2c_1_edit_profile_v2"
+    },
+    appId:'cfb8a528-10ce-4bcd-b677-5cae7c4132d3',
+    redirectUrl:'http://localhoat:5173',
+    scopes:[
+        'user.read',
+        'register.write'
+    ],
+    authorities:{
+   signUp:{ 
+    authority: "https://muraguwamwerugmail.b2clogin.com/muraguwamwerugmail.onmicrosoft.com/b2c_1_susi_reset_v2"
+        },
+    signIn:{
+     authority: "https://muraguwamwerugmail.b2clogin.com/muraguwamwerugmail.onmicrosoft.com/b2c_1_edit_profile_v2"
+    }
+    },
+         authorityDomain: "muraguwamwerugmail.b2clogin.com"
+};
+export const msalConfig: Configuration = {
+    auth: {
+        clientId: '<your-MyApp-application-ID>',
+        authority: b2cPolicies.authorities.signUp.authority,
+        authority: b2cPolicies.authorities.signIn.authority,
+        knownAuthorities: [b2cPolicies.authorityDomain],
+        redirectUri: '/', 
+    },
+   // More configuration here
+}
+export const protectedResources = {
+    todoListApi: {
+      endpoint: "http://localhost:5000/hello",
+      scopes: ["https://your-tenant-name.onmicrosoft.com/tasks-api/tasks.read"],
+    },
+  }
